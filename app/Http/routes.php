@@ -37,5 +37,7 @@ Route::group(['prefix' => '/admin','middleware' => ['web']], function () {
     Route::group(['prefix' => '/blog'], function () {
         Route::controller('/cate','Admin\BlogCateController');
         Route::controller('/art','Admin\BlogArtController');
+        Route::controller('/links','Admin\BlogLinksController');
+        Route::controller('/navs','Admin\BlogNavsController');
     });
 });
