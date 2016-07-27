@@ -13,23 +13,23 @@
 			</p>
 			<p>
 				<label>网站状态：</label>
-				<input name="web_status" class="required" type="text" size="30" value="{{$data['web_status']}}" alt="请输入网站状态"/>
+				<input type="radio" name="web_status" value="1" checked="checked">开启 <input type="radio" name="web_status" value="0">关闭
 			</p>
 			<p>
 				<label>SEO标题：</label>
 				<input name="seo_title" class="required" type="text" size="30" value="{{$data['seo_title']}}" alt="请输入SEO标题"/>
 			</p>
 			<p>
-				<label>关键词：</label>
-				<input name="keywords" class="required" type="text" size="30" value="{{$data['keywords']}}" alt="关键词"/>
+				<label>版权：</label>
+				<textarea name="copyright" class="required" cols="40" rows="10">{{$data['copyright']}}</textarea>
 			</p>
 			<p>
 				<label>描述：</label>
-				<input name="description" class="required" type="text" size="30" value="{{$data['description']}}" alt="描述"/>
+				<textarea name="description" class="required" cols="40" rows="10">{{$data['description']}}</textarea>
 			</p>
 			<p>
-				<label>版权：</label>
-				<input name="copyright" class="required" type="text" size="30" value="{{$data['copyright']}}" alt="版权"/>
+				<label>关键词：</label>
+				<input name="keywords" class="required" type="text" size="30" value="{{$data['keywords']}}" alt="关键词"/>
 			</p>
 		</div>
 		<div class="formBar">

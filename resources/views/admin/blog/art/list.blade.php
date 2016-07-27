@@ -33,7 +33,7 @@
 			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="ids"  postType="string" href="{{ url('/admin/blog/art/batch-del')}}?_token={{csrf_token()}}" class="delete"><span>批量删除逗号分隔</span></a></li>
 			<li><a class="edit" href="/admin/blog/art/edit/{id}" target="navTab" warn="请选择一个分类"><span>修改</span></a></li>
 			<li class="line">line</li>
-			{{--<li><a class="icon" href="/admin/artgory-export" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>--}}
+			<li><a class="icon" href="/admin/blog/art/excel" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
 		</ul>
 	</div>
 	<table class="table" width="1200" layoutH="138">
