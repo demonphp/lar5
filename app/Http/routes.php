@@ -39,5 +39,6 @@ Route::group(['prefix' => '/admin','middleware' => ['web']], function () {
         Route::controller('/art','Admin\BlogArtController');
         Route::controller('/links','Admin\BlogLinksController');
         Route::controller('/navs','Admin\BlogNavsController');
+        Route::controller('/conf','Admin\BlogConfController');
     });
 });

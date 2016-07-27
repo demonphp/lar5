@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+/*
+ * 文件上传控制器
+ */
 // 添加如下三个use语句到UploadController控制器顶部
 use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\UploadNewFolderRequest;

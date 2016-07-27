@@ -146,7 +146,7 @@
 								<li><a href="{{ url('/admin/blog/art/list') }}" target="navTab" rel="w_table">文章列表</a></li>
 								<li><a href="{{ url('/admin/blog/links/list') }}" target="navTab" rel="w_table">友情链接</a></li>
 								<li><a href="{{ url('/admin/blog/navs/list') }}" target="navTab" rel="w_table">自定义导航</a></li>
-								<li><a href="{{ url('/admin/blog/conf/list') }}" target="navTab" rel="w_table">网站配置</a></li>
+								<li><a href="{{ url('/admin/blog/conf/edit') }}" target="navTab" rel="w_table">网站配置</a></li>
 							</ul>
 						</li>
 					</ul>
