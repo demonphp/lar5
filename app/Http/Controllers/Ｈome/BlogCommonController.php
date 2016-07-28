@@ -24,5 +24,6 @@ class BlogCommonController extends Controller
         View::share('navs',$navs);
         View::share('hot',$hot);
         View::share('new',$new);
+
     }
 }

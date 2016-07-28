@@ -53,4 +53,6 @@ class BlogIndexController extends BlogCommonController
 
         return view($this->view_path .'.new',compact('field','article','data'));
     }
+
+
 }
