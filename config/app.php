@@ -157,6 +157,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,     //图片处理类
+        Maatwebsite\Excel\ExcelServiceProvider::class,      //Excel类
+        
 
     ],
 
@@ -205,6 +207,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Image' => Intervention\Image\Facades\Image::class,         //图片处理类
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,          //Excel类
+
+
 
     ],
 

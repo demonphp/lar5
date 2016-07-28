@@ -17,7 +17,7 @@ class BlogCommonController extends Controller
         $hot = BlogArt::orderBy('view','desc')->take(5)->get();
 
         //最新发布文章8篇
-        $new = BlogArt::orderBy('time','desc')->take(8)->get();
+        $new = BlogArt::orderBy('addtime','desc')->take(8)->get();
 
         $navs = BlogNavs::all();
 

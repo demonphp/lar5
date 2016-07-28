@@ -43,7 +43,7 @@
 				<label>所属分类：</label>
 				<input name="cate.id" value="0" type="hidden"/>
 				<input class="required" name="cate.catetName" type="text" value="0" readonly/>
-				<a class="btnLook" href="{{url('/admin/blog/art/tree-lookup')}}" lookupGroup="art">查找带回</a>
+				<a class="btnLook" href="{{url('/admin/blog/cate/tree-lookup')}}" lookupGroup="art">查找带回</a>
 			</p>
 			<p>
 				<label>创建 时间：</label>

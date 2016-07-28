@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\BlogArt;
-use Validator,Image;
+use Validator,Image,Excel;
 
 class BlogArtController extends Controller
 {
@@ -162,24 +162,22 @@ class BlogArtController extends Controller
         return success('请选择要删除的文章');
     }
 
-    public function getTest() {
-
-        return public_path();
-        $file = file_get_contents('D:/web/lar5_2/public/logo.jpg');
-
-        $img = Image::make($file);
-//        return $img;
-//// resize image instance
-//        $img->resize(320, 240);
-
-// insert a watermark
-        $img->insert('D:/web/lar5_2/public/demon_thumb.png');
-
-// save image in desired format
-        $img->save('/bar.jpg');
-
-        return 'ok';
+    /*
+     * @desc 获得excel数据表
+     * @param1 参数暂无
+     * @return 返回excel表
+     */
+    public function anyExport() {
+        $cellData = BlogArt::get()->toArray();
+        array_unshift($cellData,['序号','文章名','标题','关键字','描述','内容','浏览量','缩略图地址','排序','作者','发布时间','所属分类','创建时间','更新时间','删除时间']);
+        Excel::create('博客文章',function($excel) use ($cellData){
+            $excel->sheet('score', function($sheet) use ($cellData){
+                $sheet->rows($cellData);
+            });
+        })->export('xls');
     }
+
+
 
 
 

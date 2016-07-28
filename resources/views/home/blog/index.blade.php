@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('info')
-    <title>{{Config::get('web.web_title')}} - {{Config::get('web.seo_title')}}</title>
+    <title>{{Config::get('web_blog_conf.web_title')}} - {{Config::get('web_blog_conf.seo_title')}}</title>
     <meta name="keywords" content="{{Config::get('web.keywords')}}" />
     <meta name="description" content="{{Config::get('web.description')}}" />
 @endsection
@@ -19,11 +19,11 @@
     <div class="template">
         <div class="box">
             <h3>
-                <p><span>站长</span>推荐 Recommend</p>
+                <p><span>demon </span>推荐</p>
             </h3>
             <ul>
                 @foreach($pics as $p)
-                <li><a href="{{url('a/'.$p->art_id)}}"  target="_blank"><img src="{{url($p->art_thumb)}}"></a><span>{{$p->art_title}}</span></li>
+                <li><a href="{{url('blog/art/'.$p->id)}}"  target="_blank"><img src="{{url('uploads/'.$p->thumb)}}"></a><span>{{$p->title}}</span></li>
                 @endforeach
             </ul>
         </div>
@@ -34,13 +34,13 @@
         </h2>
         <div class="bloglist left">
             @foreach($data as $d)
-            <h3>{{$d->art_title}}</h3>
-            <figure><img src="{{url($d->art_thumb)}}"></figure>
-            <ul>
-                <p>{{$d->art_description}}</p>
-                <a title="{{$d->art_title}}" href="{{url('a/'.$d->art_id)}}" target="_blank" class="readmore">阅读全文>></a>
-            </ul>
-            <p class="dateview"><span>{{date('Y-m-d',$d->art_time)}}</span><span>作者：{{$d->art_editor}}</span></p>
+                <h3>{{$d->title}}</h3>
+                <figure><img src="{{url('uploads/'.$d->thumb)}}"></figure>
+                <ul>
+                    <p>{{$d->description}}</p>
+                    <a title="{{$d->title}}" href="{{url('blog/art/'.$d->id)}}" target="_blank" class="readmore">阅读全文>></a>
+                </ul>
+                <p class="dateview"><span>{{$d->addtime}}</span><span>作者：{{$d->author}}</span></p>
             @endforeach
             <div class="page">
                 {{$data->links()}}
@@ -55,7 +55,6 @@
                 document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
             </script>
             <!-- Baidu Button END -->
-
             <div class="news" style="float:left;">
                 @parent
                 <h3 class="links">
@@ -63,11 +62,10 @@
                 </h3>
                 <ul class="website">
                     @foreach($links as $l)
-                    <li><a href="{{$l->link_url}}" target="_blank">{{$l->link_name}}</a></li>
+                    <li><a href="{{$l->url}}" target="_blank">{{$l->name}}</a></li>
                     @endforeach
                 </ul>
             </div>
-
         </aside>
     </article>
 @endsection

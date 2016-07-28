@@ -135,13 +135,13 @@
 
 			<div class="accordion" fillSpace="sidebar">
 				<div class="accordionHeader">
-					<h2><span>Folder</span>我的设置</h2>
+					<h2><span>Folder</span>我的博客</h2>
 				</div>
 				<div class="accordionContent">
 					<ul class="tree treeFolder">
 						<li><a href="tabsPage.html" target="navTab">栏目设置</a>
 							<ul>
-								<li><a href="main.html" target="navTab" rel="main">我的主页</a></li>
+								<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">博客主页</a></li>
 								<li><a href="{{ url('/admin/blog/cate/list') }}" target="navTab" rel="w_table">文章分类</a></li>
 								<li><a href="{{ url('/admin/blog/art/list') }}" target="navTab" rel="w_table">文章列表</a></li>
 								<li><a href="{{ url('/admin/blog/links/list') }}" target="navTab" rel="w_table">友情链接</a></li>

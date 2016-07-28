@@ -1,1 +1,2 @@
-<?php return ['web_title'=>'后盾Blog系统','web_count'=>'百度统计','web_status'=>'1','seo_title'=>'后盾网 人人做后盾','copyright'=>'Design by 后盾网 <a href="http://www.houdunwang.com" target="_blank">http://www.houdunwang.com</a>','description'=>'后盾网顶尖PHP培训，最专业的网站开发php培训，小班化授课，全程实战！业内顶级北京php培训讲师亲自授课，千余课时php独家视频教程免费下载，数百G原创视频资源，实力不容造假！抢座热线：400-682-3231','keywords'=>'北京php培训',];
+<?php return ['web_title'=>'demon博客','web_count'=>'百度统计','web_status'=>'1','seo_title'=>'demon博客','copyright'=>'Design by demon <a href="http://www.demon.com" target="_blank">http://www.demon.com</a>','description'=>'打了死结的青春，捆死一颗苍白绝望的灵魂。为自己掘一个坟墓来葬心，红尘一梦，不再追寻。
+加了锁的青春，不会再因谁而推开心门。','keywords'=>'demon,博客',];

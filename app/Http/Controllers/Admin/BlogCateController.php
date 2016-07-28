@@ -85,7 +85,7 @@ class BlogCateController extends Controller
         $data['pid'] = $data['cate_pid'];
         unset($data['cate_pid']);
 
-        if(!isset($data['id'])) {
+        if(isset($data['id'])) {
             $cate = BlogCate::create($data);
             return success('添加成功');
         }else {

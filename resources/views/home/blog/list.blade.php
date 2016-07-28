@@ -1,20 +1,20 @@
 @extends('layouts.home')
 @section('info')
-    <title>{{$field->cate_name}} - {{Config::get('web.web_title')}}</title>
-    <meta name="keywords" content="{{$field->cate_keywords}}" />
-    <meta name="description" content="{{$field->cate_description}}" />
+    <title>{{$field->name}} - {{Config::get('web_blog_conf.web_title')}}</title>
+    <meta name="keywords" content="{{$field->keywords}}" />
+    <meta name="description" content="{{$field->description}}" />
 @endsection
 @section('content')
     <article>
-        <h1 class="t_nav"><span>{{$field->cate_title}}</span><a href="{{url('/')}}" class="n1">网站首页</a><a href="{{url('cate/'.$field->cate_id)}}" class="n2">{{$field->cate_name}}</a></h1>
+        <h1 class="t_nav"><span>{{$field->title}}</span><a href="{{url('/')}}" class="n1">网站首页</a><a href="{{url('cate/'.$field->cate_id)}}" class="n2">{{$field->cate_name}}</a></h1>
         <div class="newblog left">
             @foreach($data as $d)
-            <h2>{{$d->art_title}}</h2>
-            <p class="dateview"><span>发布时间：{{date('Y-m-d',$d->art_time)}}</span><span>作者：{{$d->art_author}}</span><span>分类：[<a href="{{url('cate/'.$field->cate_id)}}">{{$field->cate_name}}</a>]</span></p>
-            <figure><img src="{{url($d->art_thumb)}}"></figure>
+            <h2>{{$d->title}}</h2>
+            <p class="dateview"><span>发布时间：{{$d->addtime}}</span><span>作者：{{$d->author}}</span><span>分类：[<a href="{{url('blog/cate/'.$field->id)}}">{{$field->name}}</a>]</span></p>
+            <figure><img src="{{url('uploads/'.$d->thumb)}}"></figure>
             <ul class="nlist">
-                <p>{{$d->art_description}}</p>
-                <a title="{{$d->art_title}}" href="{{url('a/'.$d->art_id)}}" target="_blank" class="readmore">阅读全文>></a>
+                <p>{{$d->description}}</p>
+                <a title="{{$d->title}}" href="{{url('blog/art/'.$d->id)}}" target="_blank" class="readmore">阅读全文>></a>
             </ul>
             <div class="line"></div>
             @endforeach
@@ -28,7 +28,7 @@
             <div class="rnav">
                 <ul>
                     @foreach($submenu as $k=>$s)
-                    <li class="rnav{{$k+1}}"><a href="{{url('cate/'.$s->cate_id)}}" target="_blank">{{$s->cate_name}}</a></li>
+                    <li class="rnav{{$k+1}}"><a href="{{url('blog/cate/'.$s->cate_id)}}" target="_blank">{{$s->name}}</a></li>
                     @endforeach
                 </ul>
             </div>
