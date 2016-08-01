@@ -158,6 +158,7 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,     //图片处理类
         Maatwebsite\Excel\ExcelServiceProvider::class,      //Excel类
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,    //日志查看器
         
 
     ],
