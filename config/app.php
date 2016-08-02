@@ -159,7 +159,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,     //图片处理类
         Maatwebsite\Excel\ExcelServiceProvider::class,      //Excel类
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,    //日志查看器
-        
+//        Barryvdh\DomPDF\ServiceProvider::class, //PDF处理
+        Barryvdh\Snappy\ServiceProvider::class,
+
 
     ],
 
@@ -209,6 +211,10 @@ return [
 
         'Image' => Intervention\Image\Facades\Image::class,         //图片处理类
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,          //Excel类
+
+//        'PDF' => Barryvdh\DomPDF\Facade::class, //PDF处理
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
 
 

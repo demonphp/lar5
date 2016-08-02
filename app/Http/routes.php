@@ -25,7 +25,7 @@ Route::delete('admin/upload/file', 'Admin\UploadController@deleteFile');
 Route::post('admin/upload/folder', 'Admin\UploadController@createFolder');
 //Route::delete('admin/upload/folder', 'Admin\UploadController@deleteFolder');
 
-//Route::controller('/blog','Home\BlogIndexController');
+Route::controller('/blog','Home\BlogIndexController');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');  //日志路由
 
 Route::group(['prefix' => '/admin','middleware' => ['web']], function () {

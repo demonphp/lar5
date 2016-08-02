@@ -11,7 +11,10 @@
         "intervention/image": "^2.3",
         "laravelcollective/bus": "^5.2",
         "maatwebsite/excel": "~2.1.0",
-        "rap2hpoutre/laravel-log-viewer": "^0.7.0"
+        "rap2hpoutre/laravel-log-viewer": "^0.7.0",
+        "barryvdh/laravel-dompdf": "0.6.*",
+        "simplesoftwareio/simple-qrcode": "~1",
+        "barryvdh/laravel-snappy": "^0.3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

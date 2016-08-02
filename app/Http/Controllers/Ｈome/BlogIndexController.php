@@ -54,5 +54,13 @@ class BlogIndexController extends BlogCommonController
         return view($this->view_path .'.new',compact('field','article','data'));
     }
 
+    public function anyPdf() {
+
+        $pdf = \App::make('snappy.pdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->inline();
+
+    }
+
 
 }
