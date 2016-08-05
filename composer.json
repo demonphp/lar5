@@ -14,7 +14,9 @@
         "rap2hpoutre/laravel-log-viewer": "^0.7.0",
         "barryvdh/laravel-dompdf": "0.6.*",
         "simplesoftwareio/simple-qrcode": "~1",
-        "barryvdh/laravel-snappy": "^0.3.0"
+        "barryvdh/laravel-snappy": "^0.3.0",
+        "zizaco/entrust": "5.2.x-dev",
+        "baum/baum": "~1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -54,5 +56,11 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
     }
 }

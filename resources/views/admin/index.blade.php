@@ -138,17 +138,21 @@
 					<h2><span>Folder</span>我的博客</h2>
 				</div>
 				<div class="accordionContent">
-					<ul class="tree treeFolder">
-						<li><a href="tabsPage.html" target="navTab">栏目设置</a>
-							<ul>
+					<ul class="tree">
+						{{--<li><a href="tabsPage.html" target="navTab">栏目设置</a>--}}
+							{{--<ul>--}}
 								<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">博客主页</a></li>
 								<li><a href="{{ url('/admin/blog/cate/list') }}" target="navTab" rel="w_table">文章分类</a></li>
 								<li><a href="{{ url('/admin/blog/art/list') }}" target="navTab" rel="w_table">文章列表</a></li>
 								<li><a href="{{ url('/admin/blog/links/list') }}" target="navTab" rel="w_table">友情链接</a></li>
 								<li><a href="{{ url('/admin/blog/navs/list') }}" target="navTab" rel="w_table">自定义导航</a></li>
 								<li><a href="{{ url('/admin/blog/conf/edit') }}" target="navTab" rel="w_table">网站配置</a></li>
+								<li><a href="{{ url('/admin/user/list') }}" target="navTab" rel="w_table">用户列表</a></li>
+								<li><a href="{{ url('/admin/manager/admin/list') }}" target="navTab" rel="w_table">管理列表</a></li>
+								<li><a href="{{ url('/admin/manager/role/list') }}" target="navTab" rel="w_table">角色列表</a></li>
+								<li><a href="{{ url('/admin/manager/permission/list') }}" target="navTab" rel="w_table">权限列表</a></li>
 							</ul>
-						</li>
+						{{--</li>--}}
 					</ul>
 				</div>
 

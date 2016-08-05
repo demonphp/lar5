@@ -44,10 +44,22 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'auth'          => \App\Http\Middleware\Authenticate::class,
+        'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'can'           => \Illuminate\Foundation\Http\Middleware\Authorize::class,
+        'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        //下面三个是使用权限
+        'role'          => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission'    => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability'       => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+
+        /**
+         * 自定义权限验证
+         */
+        'role.base'     => \App\Http\Middleware\RoleBase::class, // 基础的验证
+        'role.auth'     => \App\Http\Middleware\RoleAuth::class, // 权限验证
+        'role.menu'     => \App\Http\Middleware\RoleMenu::class, // 后台菜单
     ];
 }

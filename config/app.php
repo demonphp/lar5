@@ -160,7 +160,9 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,      //Excel类
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,    //日志查看器
 //        Barryvdh\DomPDF\ServiceProvider::class, //PDF处理
-        Barryvdh\Snappy\ServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,    //PDF处理
+        Zizaco\Entrust\EntrustServiceProvider::class,       //权限管理
+        Baum\Providers\BaumServiceProvider::class,              //无限级分类
 
 
     ],
@@ -215,6 +217,7 @@ return [
 //        'PDF' => Barryvdh\DomPDF\Facade::class, //PDF处理
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Entrust' => Zizaco\Entrust\EntrustFacade::class,       //权限管理
 
 
 
