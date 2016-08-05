@@ -16,7 +16,8 @@
         "simplesoftwareio/simple-qrcode": "~1",
         "barryvdh/laravel-snappy": "^0.3.0",
         "zizaco/entrust": "5.2.x-dev",
-        "baum/baum": "~1.1"
+        "baum/baum": "~1.1",
+        "barryvdh/laravel-ide-helper": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -51,6 +52,9 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
     },

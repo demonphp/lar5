@@ -163,6 +163,7 @@ return [
         Barryvdh\Snappy\ServiceProvider::class,    //PDF处理
         Zizaco\Entrust\EntrustServiceProvider::class,       //权限管理
         Baum\Providers\BaumServiceProvider::class,              //无限级分类
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,  //Ide helper
 
 
     ],
