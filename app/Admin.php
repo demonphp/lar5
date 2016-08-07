@@ -23,4 +23,10 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // 定义用户组和角色的多对多关系
+    public function roles(){
+
+        return $this->belongsToMany(role::class,'role_user','user_id','role_id');
+    }
 }

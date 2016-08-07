@@ -7,7 +7,7 @@
 </form>
 
 <div class="pageHeader">
-	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="{{ url('/admin/blog/art/list') }}" method="post">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="{{ url('/admin/manager/admin//list') }}" method="post">
 	<div class="searchBar">
 		<ul class="searchContent">
 			<li>
@@ -29,11 +29,11 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="{{ url('/admin/blog/art/edit/0')}}" target="navTab"><span>添加</span></a></li>
-			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="ids"  postType="string" href="{{ url('/admin/blog/art/batch-del')}}?_token={{csrf_token()}}" class="delete"><span>批量删除逗号分隔</span></a></li>
-			<li><a class="edit" href="/admin/blog/art/edit/{id}" target="navTab" warn="请选择一个分类"><span>修改</span></a></li>
+			<li><a class="add" href="{{ url('/admin/manager/admin//edit/0')}}" target="navTab"><span>添加</span></a></li>
+			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="ids"  postType="string" href="{{ url('/admin/manager/admin//batch-del')}}?_token={{csrf_token()}}" class="delete"><span>批量删除逗号分隔</span></a></li>
+			<li><a class="edit" href="/admin/manager/admin//edit/{id}" target="navTab" warn="请选择一个分类"><span>修改</span></a></li>
 			<li class="line">line</li>
-			<li><a class="icon" href="/admin/blog/art/export" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+			<li><a class="icon" href="/admin/manager/admin//export" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
 		</ul>
 	</div>
 	<table class="table" width="1200" layoutH="138">
@@ -60,8 +60,9 @@
 					<td>{{$v['created_at']}}</td>
 					<td>{{$v['updated_at']}}</td>
 					<td>
-						<a title="删除" target="ajaxTodo" href="/admin/blog/art/del/{{$v['id']}}?_token={{csrf_token()}}" class="btnDel">删除</a>
-						<a title="编辑" target="navTab" href="/admin/blog/art/edit/{{$v['id']}}" class="btnEdit">编辑</a>
+						<a title="删除" target="ajaxTodo" href="/admin/manager/admin/del/{{$v['id']}}?_token={{csrf_token()}}" class="btnDel">删除</a>
+						<a title="编辑" target="navTab" href="/admin/manager/admin/edit/{{$v['id']}}" class="btnEdit">编辑</a>
+						<a title="授权" target="navTab" href="/admin/manager/admin/accr-edit/{{$v['id']}}" class="btnxx">授权</a>
 					</td>
 				</tr>
 			@endforeach

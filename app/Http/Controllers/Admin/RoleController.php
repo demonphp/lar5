@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Models\Permission;
 use App\Role;
 use Illuminate\Support\Facades\File;
 
@@ -11,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\BlogArt;
-use Validator,Excel;
+use Validator;
 
 class RoleController extends Controller
 {
@@ -99,6 +100,39 @@ class RoleController extends Controller
         $art->delete($id);
         return success('删除成功');
     }
+
+    /*
+     * @desc
+     */
+    public function anyAccrEdit($id){
+        $permissions = Permission::permissionsTree(); // 获取所有存在的权限
+
+        // 通过多对多获取当前用户组所拥有权限
+        $role = Role::find($id);
+        $this_role_permissions = $role->permissions()->get(['id'])->toArray();
+
+        $thisPermissionArray = []; // 当前用户所有权限集合
+        foreach($this_role_permissions as $permission){
+            $thisPermissionArray[] = $permission['id'];
+        }
+
+        $thisPermissionArray = json_encode($thisPermissionArray);
+        return view($this->view_path.'.accredit',compact('role','permissions','thisPermissionArray'));
+    }
+
+    public function anyAccrSave(Request $request) {
+
+        $input = $request->except('_token');
+        $role = Role::find($input['id']);
+        $res = $role->perms()->sync($input['permission_id']);
+
+        if($res){
+            return success('授权成功');
+        }else{
+            return error('数据提交失败，请稍后重试！');
+        }
+    }
+
 
 
 

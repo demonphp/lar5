@@ -64,6 +64,7 @@
 					<td>
 						<a title="删除" target="ajaxTodo" href="/admin/manager/role/del/{{$v['id']}}?_token={{csrf_token()}}" class="btnDel">删除</a>
 						<a title="编辑" target="navTab" href="/admin/manager/role/edit/{{$v['id']}}" class="btnEdit">编辑</a>
+						<a title="授权" target="navTab" href="/admin/manager/role/accr-edit/{{$v['id']}}" class="btnAccrEdit">授权</a>
 					</td>
 				</tr>
 			@endforeach

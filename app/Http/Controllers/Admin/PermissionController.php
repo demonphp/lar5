@@ -100,7 +100,6 @@ class PermissionController extends Controller
             $per->update($data);
             return success('更新成功');
         }
-
     }
 
     /*
