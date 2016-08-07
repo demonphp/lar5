@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
@@ -12,13 +11,14 @@ class AuthController extends Controller
 {
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/admin/';
     protected $guard = 'admin';
     protected $loginView = 'admin.login';
     protected $registerView = 'admin.register';
 
     public function __construct()
     {
+
         $this->middleware('guest:admin', ['except' => 'logout']);
     }
 
@@ -41,6 +41,11 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+    }
+
+    public function getLogin() {
+        echo 'sdgksdlgja';
+        return 'ok';
     }
 
 }

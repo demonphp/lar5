@@ -30,7 +30,7 @@ class RoleBase
     {
         // 登录检测
         if($this->auth->guest()){
-            return redirect()->guest('login');
+            //return redirect()->guest('login');
         }
         // 定义超级管理员常量
         define('IS_ROOT',Role::isAdministrator());

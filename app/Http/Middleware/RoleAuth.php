@@ -38,14 +38,14 @@ class RoleAuth
 
 
         $guest = $this->auth->guest(); // 判断当前用户是否登录
-        if($guest){
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('login');
-            }
-        }
-
+//        dd($guest);
+//        if($guest){
+//            if ($request->ajax() || $request->wantsJson()) {
+//                return response('Unauthorized.', 401);
+//            } else {
+//                return redirect()->guest('admin/login');
+//            }
+//        }
 
         if(!IS_ROOT){ // 超管不受限制
 

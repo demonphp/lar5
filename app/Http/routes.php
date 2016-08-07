@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
+//Route::auth();
 Route::get('/home', 'HomeController@index');
 
 // 文件上传下载管理
@@ -45,63 +45,34 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');  
 //    });
 //});
 
-Route::group(['prefix'=>'admin','middleware'=>['role.base','role.menu','role.auth'],'namespace'=>'Admin'],function(){
-    Route::auth();      //这个有点不太清楚怎么用
+Route::get('/admin/login', 'Admin\AuthController@getLogin');
+Route::post('/admin/login', 'Admin\AuthController@postLogin');
+//Route::get('/admin/register', 'Admin\AuthController@getRegister');
+//Route::post('/admin/register', 'Admin\AuthController@postRegister');
 
-    Route::post('/login', 'AuthController@postLogin');
-    Route::get('/register', 'AuthController@getRegister');
-    Route::post('/register', 'AuthController@postRegister');
-    Route::get('/', 'AdminController@index');
+Route::group(['prefix'=>'admin','middleware'=>['web','role.base','role.menu','role.auth']],function(){
+    Route::get('/', 'Admin\AdminController@index');
+//    Route::auth();      //这个有点不太清楚怎么用
 
     //角色权限管理
-    Route::group(['prefix' => '/manager'], function () {
-//        Route::controller('/user','BlogCateController');
-        Route::controller('/admin','AdminController');
-        Route::controller('/role','RoleController');
-        Route::controller('/permission','PermissionController');
-    });
-    //博客管理
-    Route::group(['prefix' => '/blog'], function () {
-        Route::controller('/cate','BlogCateController');
-        Route::controller('/art','BlogArtController');
-        Route::controller('/links','BlogLinksController');
-        Route::controller('/navs','BlogNavsController');
-        Route::controller('/conf','BlogConfController');
-    });
+//    Route::group(['prefix'=>'/','namespace'=>'Admin'],function(){
+//        Route::group(['prefix' => '/manager'], function () {
+//            Route::controller('/admin','AdminController');
+//            Route::controller('/role','RoleController');
+//            Route::controller('/permission','PermissionController');
+//        });
+//        //博客管理
+//        Route::group(['prefix' => '/blog'], function () {
+//            Route::controller('/cate','BlogCateController');
+//            Route::controller('/art','BlogArtController');
+//            Route::controller('/links','BlogLinksController');
+//            Route::controller('/navs','BlogNavsController');
+//            Route::controller('/conf','BlogConfController');
+//        });
+//    });
 
 
-//    Route::get('index', [
-//        'as'=>'admin.index.index',
-//        'uses'=>'IndexController@index'
-//    ]); // 后台首页
-//
-//    Route::resource('user','UserController');
-//    Route::get('user/getGroup/{user}',[
-//        'as'=>'admin.user.getGroup',
-//        'uses'=>'UserController@getGroup'
-//    ]);
-//    Route::post('user/postGroup/{user}',[
-//        'as'=>'admin.user.postGroup',
-//        'uses'=>'UserController@postGroup'
-//    ]);
-///*Route::get('user',[
-//    'as'=>'admin.user.index',
-//    'uses'=>'UserController@index'
-//]);*/
-//    Route::resource('role','RoleController');
-//    Route::post('role/editPersissionToRole/{role}',[
-//        'as'=>'admin.role.editPersissionToRole',
-//        'uses'=>'RoleController@editPersissionToRole'
-//    ]);
-//
-//    Route::resource('permission','PermissionController');
-//    Route::get('permission/create/{id?}',[
-//        'as'=>'admin.permission.getCreate',
-//        'uses'=>'PermissionController@create'
-//    ]);
-//    Route::get('permission/index/{id?}',[
-//        'as'=>'admin.permission.getIndex',
-//        'uses'=>'PermissionController@index',
-//        'id'=>'{parent_id}'
-//    ]);
+
+
+
 });

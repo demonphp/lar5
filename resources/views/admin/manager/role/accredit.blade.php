@@ -20,7 +20,6 @@
 										@endforeach
 									</div>
 								@endif
-
 							</div>
 						</div>
 						@endforeach
