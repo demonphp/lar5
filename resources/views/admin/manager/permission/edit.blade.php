@@ -28,19 +28,17 @@
 				<select  name="parent_id">
 					<option value="">请选择上级分类</option>
 					@foreach($tree as $k => $v)
-						<option value="{{ $key }}"
-								{{--@if($k == $permission->parent_id) selected @endif--}}
+						<option value="{{ $k }}"
+								@if($k == $data['parent_id']) selected @endif
 								@if(in_array($k,$disabledIdsArr))) disabled @endif
 						>{{ $v }}</option>
 					@endforeach
-					<option value="1" disabled="disabled"><span style="color: #00a0e9">1</span></option>
-					<option value="2">2</option>
 				</select>
 			</p>
 			<p>
 				<label>是否菜单：</label>
-				<input type="radio" name="is_menu" checked="checked" />是
-				<input type="radio" name="is_menu" />否
+				<input type="radio" name="is_menu" @if(isset($data['is_menu']) && $data['is_menu'] == 1) checked="checked" @elseif(!isset($data['is_menu'])) checked="checked" @endif  />是
+				<input type="radio" name="is_menu" @if(isset($data['is_menu']) && $data['is_menu'] == 0) checked="checked" @endif  />否
 			</p>
 			<p>
 				<label>创建 时间：</label>

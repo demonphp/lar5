@@ -47,8 +47,8 @@ class BlogArtController extends Controller
      * @desc 返回添加或修改的页面
      */
     public function getEdit($id) {
-        $cate = BlogArt::find($id);
-        return view($this->view_path.'.edit')->with(['data'=>$cate]);
+        $art = BlogArt::find($id);
+        return view($this->view_path.'.edit')->with(['data'=>$art]);
     }
 
     /*
