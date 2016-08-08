@@ -43,9 +43,5 @@ class AuthController extends Controller
 
     }
 
-    public function getLogin() {
-        echo 'sdgksdlgja';
-        return 'ok';
-    }
 
 }
