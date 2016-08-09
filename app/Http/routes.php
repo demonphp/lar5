@@ -50,27 +50,26 @@ Route::post('/admin/login', 'Admin\AuthController@postLogin');
 //Route::get('/admin/register', 'Admin\AuthController@getRegister');
 //Route::post('/admin/register', 'Admin\AuthController@postRegister');
 
-Route::group(['prefix'=>'admin','middleware'=>['web']],function(){
-    Route::get('/', 'Admin\AdminController@index');
-    Route::get('/logout', 'Admin\AuthController@logout');       //退出登录
+Route::group(['prefix'=>'admin','middleware'=>['web','role.base','role.auth'],'namespace'=>'\Admin'],function(){
+    Route::get('/', 'AdminController@index');
+    Route::get('/logout', 'AuthController@logout');       //退出登录
 //    Route::auth();      //这个有点不太清楚怎么用
 
     //角色权限管理
-    Route::group(['prefix'=>'/','namespace'=>'Admin'],function(){
-        Route::group(['prefix' => '/manager'], function () {
-            Route::controller('/admin','AdminController');
-            Route::controller('/role','RoleController');
-            Route::controller('/permission','PermissionController');
-        });
-        //博客管理
-        Route::group(['prefix' => '/blog'], function () {
-            Route::controller('/cate','BlogCateController');
-            Route::controller('/art','BlogArtController');
-            Route::controller('/links','BlogLinksController');
-            Route::controller('/navs','BlogNavsController');
-            Route::controller('/conf','BlogConfController');
-        });
+    Route::group(['prefix' => '/manager'], function () {
+        Route::controller('/admin','AdminController');
+        Route::controller('/role','RoleController');
+        Route::controller('/permission','PermissionController');
     });
+    //博客管理
+    Route::group(['prefix' => '/blog'], function () {
+        Route::controller('/cate','BlogCateController');
+        Route::controller('/art','BlogArtController');
+        Route::controller('/links','BlogLinksController');
+        Route::controller('/navs','BlogNavsController');
+        Route::controller('/conf','BlogConfController');
+    });
+
 
 
 

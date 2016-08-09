@@ -15,9 +15,8 @@ class Role extends EntrustRole
      * 是否是超级管理员,超级管理员不受权限控制
      */
     protected static function isAdministrator($uid = null){
-        return 1;
-//        dd(request()->user()->getAuthIdentifier());
-//        $uid = is_null($uid) ? request()->user()->getAuthIdentifier() : $uid; // 当前登录者id
-//        return $uid && ($uid === 1);
+
+        $uid = is_null($uid) ? \Auth::guard('admin')->user()->id : $uid; // 当前登录者id
+        return $uid && ($uid === 1);
     }
 }
