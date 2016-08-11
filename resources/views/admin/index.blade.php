@@ -134,6 +134,37 @@
 			<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
 
 			<div class="accordion" fillSpace="sidebar">
+				{{--输出控制开始--}}
+				@if(isset($menuList))
+					@foreach($menuList as $v1)
+						<div class="accordionHeader">
+							<h2><span>Folder</span>{{$v1['display_name']}}</h2>
+						</div>
+						@if(isset($v1['children']) && !empty($v1['children']))
+							<div class="accordionContent">
+								<ul class="tree">
+								@foreach($v1['children'] as $v2)
+									@if($v2['is_menu'] == 1)
+										<li><a href="tabsPage.html" target="navTab">{{$v2['display_name']}}</a>
+											<ul>
+												@if(isset($v2['children']) && !empty($v2['children']))
+													@foreach($v2['children'] as $v3)
+														<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">{{$v3['display_name']}}</a></li>
+													@endforeach
+												@endif
+											</ul>
+										</li>
+									@else
+										<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">{{$v2['display_name']}}</a></li>
+									@endif
+								@endforeach
+								</ul>
+							</div>
+						@endif
+					@endforeach
+				@endif
+				{{--输出控制结束--}}
+
 				<div class="accordionHeader">
 					<h2><span>Folder</span>我的博客</h2>
 				</div>
@@ -151,50 +182,15 @@
 								<li><a href="{{ url('/admin/manager/admin/list') }}" target="navTab" rel="w_table">管理列表</a></li>
 								<li><a href="{{ url('/admin/manager/role/list') }}" target="navTab" rel="w_table">角色列表</a></li>
 								<li><a href="{{ url('/admin/manager/permission/list') }}" target="navTab" rel="w_table">权限列表</a></li>
-							</ul>
+							{{--</ul>--}}
 						{{--</li>--}}
 					</ul>
 				</div>
-
-				<div class="accordionHeader">
-					<h2><span>Folder</span>典型页面</h2>
-				</div>
-				<div class="accordionContent">
-					<ul class="tree treeFolder treeCheck">
-						<li><a href="demo_page1.html" target="navTab" rel="demo_page1">查询我的客户</a></li>
-						<li><a href="demo_page1.html" target="navTab" rel="demo_page2">表单查询页面</a></li>
-						<li><a href="demo_page4.html" target="navTab" rel="demo_page4">表单录入页面</a></li>
-						<li><a href="demo_page5.html" target="navTab" rel="demo_page5">有文本输入的表单</a></li>
-						<li><a href="javascript:;">有提示的表单输入页面</a>
-							<ul>
-								<li><a href="javascript:;">页面一</a></li>
-								<li><a href="javascript:;">页面二</a></li>
-							</ul>
-						</li>
-						<li><a href="javascript:;">选项卡和图形的页面</a>
-							<ul>
-								<li><a href="javascript:;">页面一</a></li>
-								<li><a href="javascript:;">页面二</a></li>
-							</ul>
-						</li>
-						<li><a href="javascript:;">选项卡和图形切换的页面</a></li>
-						<li><a href="javascript:;">左右两个互动的页面</a></li>
-						<li><a href="javascript:;">列表输入的页面</a></li>
-						<li><a href="javascript:;">双层栏目列表的页面</a></li>
-					</ul>
-				</div>
-				<div class="accordionHeader">
-					<h2><span>Folder</span>流程演示</h2>
-				</div>
-				<div class="accordionContent">
-					<ul class="tree">
-						<li><a href="newPage1.html" target="dialog" rel="dlg_page">列表</a></li>
-						<li><a href="newPage1.html" target="dialog" rel="dlg_page2">列表</a></li>
-					</ul>
-				</div>
 			</div>
+
 		</div>
 	</div>
+
 	<div id="container">
 		<div id="navTab" class="tabsPage">
 			<div class="tabsPageHeader">
@@ -217,20 +213,12 @@
 					</div>
 					<div class="pageFormContent" layoutH="80" style="margin-right:230px">
 
-
-
-
-					</div>
-
-					<div style="width:230px;position: absolute;top:60px;right:0" layoutH="80">
-						<iframe width="100%" height="430" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?width=0&height=430&fansRow=2&ptype=1&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1739071261&verifier=c683dfe7"></iframe>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
-
 </div>
 
 <div id="footer">Copyright &copy; 2016 <a href="demo_page2.html" target="dialog">demon后台系统</a> 京ICP备15053290号-2</div>

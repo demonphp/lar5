@@ -52,15 +52,16 @@ class Permission extends Node
      */
     protected function getMenu(){
         // $menus  =   session('ADMIN_MENU_LIST');
-
-        $curr_user = request()->user(); // 当前登录用户
-
+        $curr_user = Auth::guard('admin')->user();
+//        $curr_user = request()->user(); // 当前登录用户
+//dd($curr_user);
         $currRouteName = Route::currentRouteName(); //当前路由别名
+//        dd($currRouteName);
         $path = URL::getRequest()->path();
 
         if(empty($menus)){
             // 获取主菜单
-            $menus['main']  =   Self::whereNull('parent_id')->where('is_menu',1)->orderBy('sort','asc')->get(['id','name','display_name'])->toArray();
+            $menus['main']  =   Self::where('parent_id',0)->where('is_menu',1)->orderBy('sort','asc')->get(['id','name','display_name'])->toArray();
             $menus['child'] =   array(); //设置子节点
             foreach ($menus['main'] as $key => $item) {
                 // 判断主菜单权限
@@ -75,16 +76,18 @@ class Permission extends Node
             }
 
             // 查找当前子菜单
+//            dd($currRouteName);
             // \DB::connection()->enableQueryLog();
-            $pid = Permission::whereNotNull('parent_id')
+            $pid = Permission::where('parent_id','!=',0)
                 ->where('name',$currRouteName)
                 ->first(['parent_id']);
-            // print_r(\DB::getQueryLog());
+//dd($pid);
+//             dd(\DB::getQueryLog());
 
             if(isset($pid->parent_id)){
                 // 查找当前主菜单
                 $nav =  Permission::whereId($pid->parent_id)->first();
-
+//dd($nav);
                 if($nav->parent_id){
                     $nav    =   Permission::whereId($nav->parent_id)->first();
                 }

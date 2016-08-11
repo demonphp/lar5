@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Admin;
+use App\Models\Permission;
 use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -21,9 +22,23 @@ class AdminController extends Controller
 
     public function index()
     {
+
+
         $admin = Auth::guard('admin')->user();
+
+        //获取目录树
+        $root_data = Permission::where('parent_id','=',0)->get();
+
+        $menuList = [];
+        foreach($root_data as $v) {
+            $menuList[] = Permission::where('id', '=',$v['id'])->first()->getDescendantsAndSelf()->toHierarchy()[$v['id']];
+        }
+
+
+//return $menuList;
+        //$tree = Permission::where('name', '=', 'admin.user')->first()->getDescendantsAndSelf()->toHierarchy();
 //        dd($admin);
-        return view('admin.index');
+        return view('admin.index',compact('menuList'));
     }
 
     /*

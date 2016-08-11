@@ -53,7 +53,7 @@ class PermissionController extends Controller
         }else {
             $disabledIdsArr = [];
         }
-        $permissionsTree = Permission::getNestedList('display_name','id','└'); // 获取所有节点树
+        $permissionsTree = Permission::toTree('display_name','id','└'); // 获取所有节点树
         return view($this->view_path.'.edit')->with(['data'=>$permission,'tree'=>$permissionsTree,'disabledIdsArr'=>$disabledIdsArr]);
     }
 

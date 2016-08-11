@@ -21,6 +21,8 @@ class RoleMenu
      */
     public function handle($request, Closure $next)
     {
+//        dd(Permission::getMenu());
+
 //        view()->share('menuList',Permission::getMenu()); // 变量共享
 
         return $next($request);

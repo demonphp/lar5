@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>demon后台管理系统</title>
 
+
 	<link href="{{ asset('asset/Dwz/themes/default/style.css')}}" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="{{ asset('asset/Dwz/themes/css/core.css')}}" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="{{ asset('asset/Dwz/themes/css/print.css')}}" rel="stylesheet" type="text/css" media="print"/>
@@ -15,10 +16,56 @@
 	<!--[if lt IE 9]><script src="js/speedup.js" type="text/javascript"></script><script src="js/jquery-1.11.3.min.js" type="text/javascript"></script><![endif]-->
 	<!--[if gte IE 9]><!--><script src="{{ asset('asset/Dwz/js/jquery-2.1.4.min.js')}}" type="text/javascript"></script><!--<![endif]-->
 
+	<script src="{{ asset('asset/Dwz/js/jquery.cookie.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/jquery.validate.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/jquery.bgiframe.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/xheditor/xheditor-1.2.2.min.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/xheditor/xheditor_lang/zh-cn.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/uploadify/scripts/jquery.uploadify.js')}}" type="text/javascript"></script>
 
+	<!-- svg图表  supports Firefox 3.0+, Safari 3.0+, Chrome 5.0+, Opera 9.5+ and Internet Explorer 6.0+ -->
+	<script type="text/javascript" src="{{ asset('asset/Dwz/chart/raphael.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('asset/Dwz/chart/g.raphael.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('asset/Dwz/chart/g.bar.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('asset/Dwz/chart/g.line.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('asset/Dwz/chart/g.pie.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('asset/Dwz/chart/g.dot.js')}}"></script>
 
-	<!-- 可以用dwz.min.js替换前面全部dwz.*.js (注意：替换时下面dwz.regional.zh.js还需要引入)    -->
-    <script src="{{ asset('asset/Dwz/bin/dwz.min.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.core.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.util.date.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.validate.method.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.barDrag.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.drag.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.tree.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.accordion.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.ui.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.theme.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.switchEnv.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.alertMsg.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.contextmenu.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.navTab.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.tab.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.resize.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.dialog.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.dialogDrag.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.sortDrag.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.cssTable.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.stable.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.taskBar.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.ajax.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.pagination.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.database.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.datepicker.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.effects.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.panel.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.checkbox.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.history.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.combox.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('asset/Dwz/js/dwz.print.js')}}" type="text/javascript"></script>
+
+	<!-- 可以用dwz.min.js替换前面全部dwz.*.js (注意：替换时下面dwz.regional.zh.js还需要引入)
+    <script src="bin/dwz.min.js" type="text/javascript"></script>
+    -->
 	<script src="{{ asset('asset/Dwz/js/dwz.regional.zh.js')}}" type="text/javascript"></script>
 
 	<script type="text/javascript">
@@ -61,12 +108,12 @@
 				<li><a href="changepwd.html" target="dialog" width="600">设置</a></li>
 				<li><a href="http://www.cnblogs.com/dwzjs" target="_blank">博客</a></li>
 				<li><a href="http://weibo.com/dwzui" target="_blank">微博</a></li>
-				<li><a href="/admin/login-out">退出</a></li>
+				<li><a href="/admin/logout">退出</a></li>
 			</ul>
 			<ul class="themeList" id="themeList">
 				<li theme="default"><div class="selected">蓝色</div></li>
 				<li theme="green"><div>绿色</div></li>
-				<!--<li theme="red"><div>红色</div></li>-->
+				<li theme="red"><div>红色</div></li>
 				<li theme="purple"><div>紫色</div></li>
 				<li theme="silver"><div>银色</div></li>
 				<li theme="azure"><div>天蓝</div></li>
@@ -88,16 +135,24 @@
 
 			<div class="accordion" fillSpace="sidebar">
 				<div class="accordionHeader">
-					<h2><span>Folder</span>我的设置</h2>
+					<h2><span>Folder</span>我的博客</h2>
 				</div>
 				<div class="accordionContent">
-					<ul class="tree treeFolder">
-						<li><a href="tabsPage.html" target="navTab">栏目设置</a>
-							<ul>
-								<li><a href="main.html" target="navTab" rel="main">我的主页</a></li>
+					<ul class="tree">
+						{{--<li><a href="tabsPage.html" target="navTab">栏目设置</a>--}}
+							{{--<ul>--}}
+								<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">博客主页</a></li>
 								<li><a href="{{ url('/admin/blog/cate/list') }}" target="navTab" rel="w_table">文章分类</a></li>
+								<li><a href="{{ url('/admin/blog/art/list') }}" target="navTab" rel="w_table">文章列表</a></li>
+								<li><a href="{{ url('/admin/blog/links/list') }}" target="navTab" rel="w_table">友情链接</a></li>
+								<li><a href="{{ url('/admin/blog/navs/list') }}" target="navTab" rel="w_table">自定义导航</a></li>
+								<li><a href="{{ url('/admin/blog/conf/edit') }}" target="navTab" rel="w_table">网站配置</a></li>
+								<li><a href="{{ url('/admin/user/list') }}" target="navTab" rel="w_table">用户列表</a></li>
+								<li><a href="{{ url('/admin/manager/admin/list') }}" target="navTab" rel="w_table">管理列表</a></li>
+								<li><a href="{{ url('/admin/manager/role/list') }}" target="navTab" rel="w_table">角色列表</a></li>
+								<li><a href="{{ url('/admin/manager/permission/list') }}" target="navTab" rel="w_table">权限列表</a></li>
 							</ul>
-						</li>
+						{{--</li>--}}
 					</ul>
 				</div>
 
@@ -168,7 +223,7 @@
 					</div>
 
 					<div style="width:230px;position: absolute;top:60px;right:0" layoutH="80">
-						{{--<iframe width="100%" height="430" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?width=0&height=430&fansRow=2&ptype=1&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1739071261&verifier=c683dfe7"></iframe>--}}
+						<iframe width="100%" height="430" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?width=0&height=430&fansRow=2&ptype=1&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1739071261&verifier=c683dfe7"></iframe>
 					</div>
 				</div>
 

@@ -50,14 +50,16 @@ Route::post('/admin/login', 'Admin\AuthController@postLogin');
 //Route::get('/admin/register', 'Admin\AuthController@getRegister');
 //Route::post('/admin/register', 'Admin\AuthController@postRegister');
 
-Route::group(['prefix'=>'admin','middleware'=>['web','role.base','role.auth'],'namespace'=>'\Admin'],function(){
-    Route::get('/', 'AdminController@index');
+Route::group(['prefix'=>'admin','middleware'=>['web','role.base','role.auth','role.menu'],'namespace'=>'\Admin'],function(){
+//    Route::get('/', 'AdminController@index');
+    Route::get('/',['as'=>'admin.index.index','uses'=>'AdminController@index']);
     Route::get('/logout', 'AuthController@logout');       //退出登录
 //    Route::auth();      //这个有点不太清楚怎么用
 
     //角色权限管理
     Route::group(['prefix' => '/manager'], function () {
-        Route::controller('/admin','AdminController');
+        Route::any('/admin/list',['as'=>'admin.manager.admin.list','uses'=>'AdminController@anyList']);
+//        Route::controller('/admin','AdminController');
         Route::controller('/role','RoleController');
         Route::controller('/permission','PermissionController');
     });
