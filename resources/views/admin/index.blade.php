@@ -137,29 +137,37 @@
 				{{--输出控制开始--}}
 				@if(isset($menuList))
 					@foreach($menuList as $v1)
-						<div class="accordionHeader">
-							<h2><span>Folder</span>{{$v1['display_name']}}</h2>
-						</div>
-						@if(isset($v1['children']) && !empty($v1['children']))
-							<div class="accordionContent">
-								<ul class="tree">
-								@foreach($v1['children'] as $v2)
-									@if($v2['is_menu'] == 1)
-										<li><a href="tabsPage.html" target="navTab">{{$v2['display_name']}}</a>
-											<ul>
-												@if(isset($v2['children']) && !empty($v2['children']))
-													@foreach($v2['children'] as $v3)
-														<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">{{$v3['display_name']}}</a></li>
-													@endforeach
-												@endif
-											</ul>
-										</li>
-									@else
-										<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">{{$v2['display_name']}}</a></li>
-									@endif
-								@endforeach
-								</ul>
+						@if(Auth::guard('admin')->user()->can($v1['name']))
+							<div class="accordionHeader">
+
+									<h2><span>Folder</span>{{$v1['display_name']}}</h2>
+
 							</div>
+							@if(isset($v1['children']) && !empty($v1['children']))
+								<div class="accordionContent">
+									<ul class="tree">
+									@foreach($v1['children'] as $v2)
+										@if(Auth::guard('admin')->user()->can($v1['name']))
+											@if($v2['is_menu'] == 1)
+												<li><a href="tabsPage.html" target="navTab">{{$v2['display_name']}}</a>
+													<ul>
+														@if(isset($v2['children']) && !empty($v2['children']))
+															@foreach($v2['children'] as $v3)
+																@if(Auth::guard('admin')->user()->can($v3['name']))
+																	<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">{{$v3['display_name']}}</a></li>
+																@endif
+															@endforeach
+														@endif
+													</ul>
+												</li>
+											@else
+												<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">{{$v2['display_name']}}</a></li>
+											@endif
+										@endif
+									@endforeach
+									</ul>
+								</div>
+							@endif
 						@endif
 					@endforeach
 				@endif
@@ -179,7 +187,7 @@
 								<li><a href="{{ url('/admin/blog/navs/list') }}" target="navTab" rel="w_table">自定义导航</a></li>
 								<li><a href="{{ url('/admin/blog/conf/edit') }}" target="navTab" rel="w_table">网站配置</a></li>
 								<li><a href="{{ url('/admin/user/list') }}" target="navTab" rel="w_table">用户列表</a></li>
-								<li><a href="{{ url('/admin/manager/admin/list') }}" target="navTab" rel="w_table">管理列表</a></li>
+								<li><a href="{{ route('admin.manager.admin.list') }}" target="navTab" rel="w_table">管理列表</a></li>
 								<li><a href="{{ url('/admin/manager/role/list') }}" target="navTab" rel="w_table">角色列表</a></li>
 								<li><a href="{{ url('/admin/manager/permission/list') }}" target="navTab" rel="w_table">权限列表</a></li>
 							{{--</ul>--}}

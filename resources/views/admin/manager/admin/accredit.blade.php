@@ -1,6 +1,6 @@
 
 <div class="pageContent">
-	<form method="post" action="/admin/manager/admin/accr-save" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this);">
+	<form method="post" action="/admin/manager/admin/accr-save"  class="pageForm required-validate" onsubmit="return iframeCallback(this);">
 		<div class="pageFormContent" layoutH="56">
 			{!! csrf_field() !!}
 			<input type="hidden" value="{{$data['id']}}" name="user_id">

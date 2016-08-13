@@ -104,7 +104,7 @@ class RoleController extends Controller
     /*
      * @desc
      */
-    public function anyAccrEdit($id){
+    public function getAccrEdit($id){
         $permissions = Permission::permissionsTree(); // 获取所有存在的权限
 
         // 通过多对多获取当前用户组所拥有权限
@@ -120,7 +120,7 @@ class RoleController extends Controller
         return view($this->view_path.'.accredit',compact('role','permissions','thisPermissionArray'));
     }
 
-    public function anyAccrSave(Request $request) {
+    public function postAccrSave(Request $request) {
 
         $input = $request->except('_token');
         $role = Role::find($input['id']);

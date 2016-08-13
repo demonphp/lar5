@@ -17,8 +17,6 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $res = Auth::guard($guard)->guest();
-//        dd($res);
         //判断是否已经登录 $res = true为未登录，false为已经登录
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson()) {

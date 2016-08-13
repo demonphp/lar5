@@ -7,7 +7,7 @@
 </form>
 
 <div class="pageHeader">
-	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="{{ url('/admin/manager/admin//list') }}" method="post">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="{{ route('admin.manager.admin.list') }}" method="post">
 	<div class="searchBar">
 		<ul class="searchContent">
 			<li>

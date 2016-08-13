@@ -166,6 +166,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,  //Ide helper
 
 
+
     ],
 
     /*

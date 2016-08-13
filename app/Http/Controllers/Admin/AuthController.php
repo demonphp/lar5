@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+/*
+ * @desc　注册登录模块,后面去掉不要
+ */
 class AuthController extends Controller
 {
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;

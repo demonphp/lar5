@@ -50,18 +50,31 @@ Route::post('/admin/login', 'Admin\AuthController@postLogin');
 //Route::get('/admin/register', 'Admin\AuthController@getRegister');
 //Route::post('/admin/register', 'Admin\AuthController@postRegister');
 
-Route::group(['prefix'=>'admin','middleware'=>['web','role.base','role.auth','role.menu'],'namespace'=>'\Admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>['web','role.base','role.auth'],'namespace'=>'\Admin'],function(){
 //    Route::get('/', 'AdminController@index');
     Route::get('/',['as'=>'admin.index.index','uses'=>'AdminController@index']);
-    Route::get('/logout', 'AuthController@logout');       //退出登录
+    Route::get('/logout',['as'=>'admin.index.logout','uses'=>'AuthController@logout']);
+//    Route::get('/logout', 'AuthController@logout');       //退出登录
 //    Route::auth();      //这个有点不太清楚怎么用
 
     //角色权限管理
     Route::group(['prefix' => '/manager'], function () {
-        Route::any('/admin/list',['as'=>'admin.manager.admin.list','uses'=>'AdminController@anyList']);
+        Route::any('/admin/list',['as'=>'admin.manager.admin.list','uses'=>'AdminController@anyList']);                 //列表
+        Route::any('/admin/edit/{id}',['as'=>'admin.manager.admin.edit','uses'=>'AdminController@getEdit']);                //修改新增
+        Route::any('/admin/accr-edit/{id}',['as'=>'admin.manager.admin.accr-edit','uses'=>'AdminController@getAccrEdit']);    //授权
+
+        Route::any('/role/list',['as'=>'admin.manager.role.list','uses'=>'RoleController@anyList']);        //列表
+        Route::any('/role/edit/{id}',['as'=>'admin.manager.role.edit','uses'=>'RoleController@getEdit']);   //修改新增
+        Route::any('/role/save/',['as'=>'admin.manager.role.save','uses'=>'RoleController@postSave']);      //保存
+        Route::any('/role/accr-edit/{id}',['as'=>'admin.manager.role.accr-edit','uses'=>'RoleController@getAccrEdit']);    //授权修改
+        Route::any('/role/accr-save/',['as'=>'admin.manager.role.accr-save','uses'=>'RoleController@postAccrSave']);        //授权保存
+
+        Route::any('/permission/list',['as'=>'admin.manager.permission.list','uses'=>'PermissionController@anyList']);        //列表
+        Route::any('/permission/edit/{id}',['as'=>'admin.manager.permission.edit','uses'=>'PermissionController@getEdit']);   //修改新增
+        Route::any('/permission/save',['as'=>'admin.manager.permission.save','uses'=>'PermissionController@postSave']);      //保存
 //        Route::controller('/admin','AdminController');
-        Route::controller('/role','RoleController');
-        Route::controller('/permission','PermissionController');
+//        Route::controller('/role','RoleController');
+//        Route::controller('/permission','PermissionController');
     });
     //博客管理
     Route::group(['prefix' => '/blog'], function () {

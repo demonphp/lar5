@@ -53,7 +53,8 @@ class PermissionController extends Controller
         }else {
             $disabledIdsArr = [];
         }
-        $permissionsTree = Permission::toTree('display_name','id','└'); // 获取所有节点树
+        $permissionsTree = Permission::getNestedList('display_name','id','└'); // 获取所有节点树
+//        return $permissionsTree;
         return view($this->view_path.'.edit')->with(['data'=>$permission,'tree'=>$permissionsTree,'disabledIdsArr'=>$disabledIdsArr]);
     }
 
@@ -88,8 +89,13 @@ class PermissionController extends Controller
         }
 
         $data = array_only($request->all(),$columns);
-
+//return  $data;
         if(!isset($data['id']) || empty($data['id'])) {
+            $res = Permission::where('name','=',$data['name'])->first();
+
+            if(!empty($res)) {
+                return error('已存在同英文名权限');
+            }
             Permission::create($data);
             return success('添加成功');
         }else {

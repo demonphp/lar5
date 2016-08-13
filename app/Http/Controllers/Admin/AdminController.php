@@ -10,10 +10,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth,Validator;
+use Illuminate\Contracts\Auth\Guard;
 
 class AdminController extends Controller
 {
     protected $view_path = 'admin.manager.admin';
+
+
+//    public function __construct(Guard $auth)
+//    {
+//        $this->auth = $auth;
+//    }
 
     public function __construct()
     {
@@ -22,9 +29,7 @@ class AdminController extends Controller
 
     public function index()
     {
-
-
-        $admin = Auth::guard('admin')->user();
+//        $admin = Auth::guard('admin')->user();
 
         //获取目录树
         $root_data = Permission::where('parent_id','=',0)->get();
@@ -36,8 +41,6 @@ class AdminController extends Controller
 
 
 //return $menuList;
-        //$tree = Permission::where('name', '=', 'admin.user')->first()->getDescendantsAndSelf()->toHierarchy();
-//        dd($admin);
         return view('admin.index',compact('menuList'));
     }
 

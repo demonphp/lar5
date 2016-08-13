@@ -1,6 +1,6 @@
 
 <div class="pageContent">
-	<form method="post" action="/admin/manager/permission/save" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this);">
+	<form method="post" action="/admin/manager/permission/save"  class="pageForm required-validate" onsubmit="return iframeCallback(this);">
 		<div class="pageFormContent" layoutH="56">
 			{!! csrf_field() !!}
 			<p>
@@ -26,7 +26,7 @@
 			<p>
 				<label>上级分类：</label>
 				<select  name="parent_id">
-					<option value="">请选择上级分类</option>
+					<option value="0">请选择上级分类</option>
 					@foreach($tree as $k => $v)
 						<option value="{{ $k }}"
 								@if($k == $data['parent_id']) selected @endif
@@ -37,8 +37,8 @@
 			</p>
 			<p>
 				<label>是否菜单：</label>
-				<input type="radio" name="is_menu" @if(isset($data['is_menu']) && $data['is_menu'] == 1) checked="checked" @elseif(!isset($data['is_menu'])) checked="checked" @endif  />是
-				<input type="radio" name="is_menu" @if(isset($data['is_menu']) && $data['is_menu'] == 0) checked="checked" @endif  />否
+				<input type="radio" name="is_menu" @if(isset($data['is_menu']) && $data['is_menu'] == 1) checked="checked" @elseif(!isset($data['is_menu'])) checked="checked" @endif value="1" />是
+				<input type="radio" name="is_menu" @if(isset($data['is_menu']) && $data['is_menu'] == 0) checked="checked" @endif value="0" />否
 			</p>
 			<p>
 				<label>创建 时间：</label>
