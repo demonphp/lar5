@@ -25,7 +25,8 @@ class BlogConfController extends Controller
         $this->conf_path = config_path() .'/'. $conf .'.php';
     }
 
-    public function getEdit() {
+    public function getEdit()
+    {
         $res = File::exists($this->conf_path);
         if($res === true) {
             $data = \Config::get($this->conf);
@@ -44,7 +45,8 @@ class BlogConfController extends Controller
         return View::make($this->view_path . '.edit')->with(['data'=>$data]);
     }
 
-    public function anySave(Request $request) {
+    public function anySave(Request $request)
+    {
         $rules = [
             'web_title'      => 'required',
             'web_count'      => 'required',

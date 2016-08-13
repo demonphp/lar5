@@ -26,14 +26,14 @@ class BlogLinksController extends Controller
         }
 
         $list = $op->paginate($page)->toArray();
-//        return $list;
         return view($this->view_path.'.list')->with(['list'=>$list]);
     }
 
     /*
      * @desc 返回添加或修改的页面
      */
-    public function getEdit($id) {
+    public function getEdit($id)
+    {
         $cate = BlogLinks::find($id);
         return view($this->view_path.'.edit')->with(['data'=>$cate]);
     }
@@ -81,7 +81,8 @@ class BlogLinksController extends Controller
     /*
      * @desc 单独删除
      */
-    public function anyDel($id) {
+    public function anyDel($id)
+    {
         $art = BlogLinks::find($id);
         $art->delete($id);
         return success('删除成功');
@@ -90,7 +91,8 @@ class BlogLinksController extends Controller
     /*
      * @desc 批量删除
      */
-    public function anyBatchDel(Request $request) {
+    public function anyBatchDel(Request $request)
+    {
         $ids = $request->input('ids','');
         if(!empty($ids)) {
             $ids = explode(',',$ids);
@@ -98,7 +100,6 @@ class BlogLinksController extends Controller
             $op = BlogLinks::whereIn('id',$ids)->delete();
             return success('删除成功');
         }
-
         return success('请选择要删除的文章');
     }
 

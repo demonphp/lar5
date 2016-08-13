@@ -31,29 +31,17 @@ class RoleAuth
      */
     public function handle($request, Closure $next)
     {
-//        $currRouteName = Route::currentRouteName(); // 当前路由别名
-////        dd($currRouteName);
-//        dd(Auth::guard('admin')->user()->can('admin.system'));
-//        $res = Auth::guard('admin')->user()->hasRole('admin');
-//        dd($res);
         if(!IS_ROOT){ // 超管不受限制
             $currRouteName = Route::currentRouteName(); // 当前路由别名
             $previousUrl = URL::previous(); // 用户访问的上一页
 
             if(!Auth::guard('admin')->user()->can($currRouteName)){ // 如果是游客或者没有权限跳转到首页
-                if($request->ajax() && ($request->getMethod() != 'GET')) {
-                    return response()->json([
-                        'status' => -1,
-                        'code' => 403,
-                        'msg' => '您没有权限执行此操作'
-                    ]);
+//                if($request->ajax() && ($request->getMethod() != 'GET')) {
+                if(($request->getMethod() != 'GET')) {
+                    return error('您没有权限执行此操作');
                 } else {
-                    return response()->json([
-                        'status' => -1,
-                        'code' => 403,
-                        'msg' => '您没有权限执行此操作'
-                    ]);
-                    //return response()->view('admin.errors.403', compact('previousUrl'));
+                    return error('您没有权限执行此操作');
+//                    return response()->view('admin.errors.403', compact('previousUrl'));
                 }
             }
         }

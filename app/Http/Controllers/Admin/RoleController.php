@@ -38,7 +38,8 @@ class RoleController extends Controller
     /*
      * @desc 返回添加或修改的页面
      */
-    public function getEdit($id) {
+    public function getEdit(Request $request) {
+        $id = $request->input('id',0);
         $role = Role::find($id);
         return view($this->view_path.'.edit')->with(['data'=>$role]);
     }
@@ -95,7 +96,8 @@ class RoleController extends Controller
     /*
      * @desc 单独删除
      */
-    public function anyDel($id) {
+    public function anyDel(Request $request) {
+        $id = $request->input('id',0);
         $art = BlogArt::find($id);
         $art->delete($id);
         return success('删除成功');

@@ -41,6 +41,11 @@
 				<input type="radio" name="is_menu" @if(isset($data['is_menu']) && $data['is_menu'] == 0) checked="checked" @endif value="0" />否
 			</p>
 			<p>
+				<label>是否导航：</label>
+				<input type="radio" name="is_nav" @if(isset($data['is_nav']) && $data['is_menu'] == 1) checked="checked" @elseif(!isset($data['is_nav'])) checked="checked" @endif value="1" />是
+				<input type="radio" name="is_nav" @if(isset($data['is_nav']) && $data['is_menu'] == 0) checked="checked" @endif value="0" />否
+			</p>
+			<p>
 				<label>创建 时间：</label>
 				<input readonly="readonly" type="text" size="30" value="{{$data['created_at']}}" />
 			</p>

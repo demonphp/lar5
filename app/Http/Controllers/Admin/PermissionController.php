@@ -38,7 +38,8 @@ class PermissionController extends Controller
     /*
      * @desc 返回添加或修改的页面
      */
-    public function getEdit($id) {
+    public function getEdit($id)
+    {
         $permission = Permission::whereId($id)->first();
         if(!empty($id)) {
             if(!is_null($permission->parent_id)){ // 如果不是顶级分类
@@ -82,17 +83,16 @@ class PermissionController extends Controller
              'parent_id'         => '上级分类',
          );
 
-        $columns = array('id','name','display_name','description','parent_id');
+        $columns = array('id','name','display_name','description','parent_id','is_menu','is_nav');
         $validator = Validator::make($request->all(), $rules, $message, $attributes);
         if ($validator->fails()) {
             return error($validator->messages()->first());
         }
 
         $data = array_only($request->all(),$columns);
-//return  $data;
+
         if(!isset($data['id']) || empty($data['id'])) {
             $res = Permission::where('name','=',$data['name'])->first();
-
             if(!empty($res)) {
                 return error('已存在同英文名权限');
             }
@@ -100,9 +100,6 @@ class PermissionController extends Controller
             return success('添加成功');
         }else {
             $per = Permission::find($data['id']);
-            if(empty($data['thumb'])) {
-                unset($data['thumb']);
-            }
             $per->update($data);
             return success('更新成功');
         }
@@ -111,7 +108,8 @@ class PermissionController extends Controller
     /*
      * @desc 单独删除
      */
-    public function anyDel($id) {
+    public function anyDel($id)
+    {
         $art = BlogArt::find($id);
         $art->delete($id);
         return success('删除成功');

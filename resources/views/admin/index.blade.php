@@ -137,24 +137,22 @@
 				{{--输出控制开始--}}
 				@if(isset($menuList))
 					@foreach($menuList as $v1)
-						@if(Auth::guard('admin')->user()->can($v1['name']))
+						@if(Auth::guard('admin')->user()->can($v1['name']) && $v1['is_nav'] == 1)
 							<div class="accordionHeader">
-
 									<h2><span>Folder</span>{{$v1['display_name']}}</h2>
-
 							</div>
 							@if(isset($v1['children']) && !empty($v1['children']))
 								<div class="accordionContent">
 									<ul class="tree">
 									@foreach($v1['children'] as $v2)
-										@if(Auth::guard('admin')->user()->can($v1['name']))
+										@if(Auth::guard('admin')->user()->can($v2['name']))
 											@if($v2['is_menu'] == 1)
-												<li><a href="tabsPage.html" target="navTab">{{$v2['display_name']}}</a>
+												<li><a>{{$v2['display_name']}}</a>
 													<ul>
 														@if(isset($v2['children']) && !empty($v2['children']))
 															@foreach($v2['children'] as $v3)
-																@if(Auth::guard('admin')->user()->can($v3['name']))
-																	<li><a href="{{ url('/blog')}}"  target="_blank" rel="main">{{$v3['display_name']}}</a></li>
+																@if(Auth::guard('admin')->user()->can($v3['name']) && $v3['is_nav'] == 1)
+																	<li><a href="{{ route($v3['name'])}}" target="navTab" rel="main">{{$v3['display_name']}}</a></li>
 																@endif
 															@endforeach
 														@endif

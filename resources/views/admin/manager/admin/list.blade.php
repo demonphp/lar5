@@ -29,7 +29,7 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="{{ url('/admin/manager/admin//edit/0')}}" target="navTab"><span>添加</span></a></li>
+			<li><a class="add" href="{{ route('admin.manager.admin.edit',['id'=>0])}}" target="navTab"><span>添加</span></a></li>
 			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="ids"  postType="string" href="{{ url('/admin/manager/admin//batch-del')}}?_token={{csrf_token()}}" class="delete"><span>批量删除逗号分隔</span></a></li>
 			<li><a class="edit" href="/admin/manager/admin//edit/{id}" target="navTab" warn="请选择一个分类"><span>修改</span></a></li>
 			<li class="line">line</li>
@@ -61,7 +61,7 @@
 					<td>{{$v['updated_at']}}</td>
 					<td>
 						<a title="删除" target="ajaxTodo" href="/admin/manager/admin/del/{{$v['id']}}?_token={{csrf_token()}}" class="btnDel">删除</a>
-						<a title="编辑" target="navTab" href="/admin/manager/admin/edit/{{$v['id']}}" class="btnEdit">编辑</a>
+						<a title="编辑" target="navTab" href="{{ route('admin.manager.admin.edit',['id'=>$v['id']])}}" class="btnEdit">编辑</a>
 						<a title="授权" target="navTab" href="/admin/manager/admin/accr-edit/{{$v['id']}}" class="btnxx">授权</a>
 					</td>
 				</tr>

@@ -35,7 +35,8 @@ class BlogNavsController extends Controller
     /*
      * @desc 返回添加或修改的页面
      */
-    public function getEdit($id) {
+    public function getEdit($id)
+    {
         $cate = BlogNavs::find($id);
         return view($this->view_path.'.edit')->with(['data'=>$cate]);
     }
@@ -92,7 +93,8 @@ class BlogNavsController extends Controller
     /*
      * @desc 单独删除
      */
-    public function anyDel($id) {
+    public function anyDel($id)
+    {
         $navs = BlogNavs::find($id);
         $navs->delete($id);
         return success('删除成功');
@@ -101,7 +103,8 @@ class BlogNavsController extends Controller
     /*
      * @desc 批量删除
      */
-    public function anyBatchDel(Request $request) {
+    public function anyBatchDel(Request $request)
+    {
         $ids = $request->input('ids','');
         if(!empty($ids)) {
             $ids = explode(',',$ids);

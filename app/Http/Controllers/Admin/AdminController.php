@@ -16,12 +16,6 @@ class AdminController extends Controller
 {
     protected $view_path = 'admin.manager.admin';
 
-
-//    public function __construct(Guard $auth)
-//    {
-//        $this->auth = $auth;
-//    }
-
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -29,18 +23,15 @@ class AdminController extends Controller
 
     public function index()
     {
-//        $admin = Auth::guard('admin')->user();
+        $admin = Auth::guard('admin')->user();
 
         //获取目录树
         $root_data = Permission::where('parent_id','=',0)->get();
-
         $menuList = [];
         foreach($root_data as $v) {
             $menuList[] = Permission::where('id', '=',$v['id'])->first()->getDescendantsAndSelf()->toHierarchy()[$v['id']];
         }
 
-
-//return $menuList;
         return view('admin.index',compact('menuList'));
     }
 
@@ -65,7 +56,8 @@ class AdminController extends Controller
     /*
     * @desc 返回添加或修改的页面
     */
-    public function getEdit($id) {
+    public function getEdit($id )
+    {
         $data = Admin::find($id);
         return view($this->view_path.'.edit',compact('data'));
     }
@@ -118,7 +110,8 @@ class AdminController extends Controller
     /*
    * @desc 返回授权页面
    */
-    public function getAccrEdit($id) {
+    public function getAccrEdit($id)
+    {
         $data = Admin::find($id);
         $this_roles = $data->roles()->lists('id')->toArray();
 

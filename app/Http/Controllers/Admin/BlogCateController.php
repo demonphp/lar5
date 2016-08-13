@@ -35,7 +35,8 @@ class BlogCateController extends Controller
     /*
      * @desc 返回添加或修改的页面
      */
-    public function getEdit($id) {
+    public function getEdit($id)
+    {
         $cate = BlogCate::find($id);
         return view($this->view_path.'.edit')->with(['data'=>$cate]);
     }
@@ -43,7 +44,8 @@ class BlogCateController extends Controller
     /*
      * @desc 树查找带回
      */
-    public function anyTreeLookup() {
+    public function anyTreeLookup()
+    {
         $cate = BlogCate::get();
         $bta = new BuildTreeArray($cate,'id','pid',0);
         $list = $bta->getTreeArray();
@@ -98,7 +100,8 @@ class BlogCateController extends Controller
     /*
      * @desc 删除分类
      */
-    public function anyDelete($id) {
+    public function anyDelete($id)
+    {
         $cate = BlogCate::find($id);
         $cate->delete($id);
         return success('删除成功');

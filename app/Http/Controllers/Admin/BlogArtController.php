@@ -46,7 +46,8 @@ class BlogArtController extends Controller
     /*
      * @desc 返回添加或修改的页面
      */
-    public function getEdit($id) {
+    public function getEdit($id)
+    {
         $art = BlogArt::find($id);
         return view($this->view_path.'.edit')->with(['data'=>$art]);
     }
@@ -54,7 +55,8 @@ class BlogArtController extends Controller
     /*
      * @desc 树查找带回
      */
-    public function anyTreeLookup() {
+    public function anyTreeLookup()
+    {
         $cate = BlogCate::get();
         $bta = new BuildTreeArray($cate,'id','pid',0);
         $list = $bta->getTreeArray();
@@ -136,7 +138,8 @@ class BlogArtController extends Controller
     /*
      * @desc 单独删除
      */
-    public function anyDel($id) {
+    public function anyDel($id)
+    {
         $art = BlogArt::find($id);
         $art->delete($id);
         return success('删除成功');
@@ -145,7 +148,8 @@ class BlogArtController extends Controller
     /*
      * @desc 批量删除
      */
-    public function anyBatchDel(Request $request) {
+    public function anyBatchDel(Request $request)
+    {
         $ids = $request->input('ids','');
 
         if(!empty($ids)) {
@@ -167,7 +171,8 @@ class BlogArtController extends Controller
      * @param1 参数暂无
      * @return 返回excel表
      */
-    public function anyExport() {
+    public function anyExport()
+    {
         $cellData = BlogArt::get()->toArray();
         array_unshift($cellData,['序号','文章名','标题','关键字','描述','内容','浏览量','缩略图地址','排序','作者','发布时间','所属分类','创建时间','更新时间','删除时间']);
         Excel::create('博客文章',function($excel) use ($cellData){
