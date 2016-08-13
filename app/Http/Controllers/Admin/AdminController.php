@@ -36,7 +36,7 @@ class AdminController extends Controller
     }
 
     /*
-     * @param1	$request
+     * 获取用户列表
      */
     public function anyList(Request $request)
     {
@@ -112,9 +112,11 @@ class AdminController extends Controller
    */
     public function getAccrEdit($id)
     {
+        if(empty($id)) {
+            return error('参数出错');
+        }
         $data = Admin::find($id);
         $this_roles = $data->roles()->lists('id')->toArray();
-
         $role = Role::get();
         return view($this->view_path.'.accredit',compact('data','role','this_roles'));
     }

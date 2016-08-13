@@ -44,9 +44,9 @@ Route::group(['prefix'=>'admin','middleware'=>['web','role.base','role.auth'],'n
     Route::group(['prefix' => '/manager'], function () {
         Route::any('/admin/list',['as'=>'admin.manager.admin.list','uses'=>'AdminController@anyList']);                 //列表
         Route::any('/admin/edit/{id}',['as'=>'admin.manager.admin.edit','uses'=>'AdminController@getEdit']);                //修改新增
-        Route::any('/admin/save',['as'=>'admin.manager.admin.save','uses'=>'AdminController@anySave']);                //修改新增
+        Route::any('/admin/save',['as'=>'admin.manager.admin.save','uses'=>'AdminController@postSave']);                //修改新增
         Route::any('/admin/accr-edit/{id}',['as'=>'admin.manager.admin.accr-edit','uses'=>'AdminController@getAccrEdit']);    //授权
-        Route::any('/admin/accr-save',['as'=>'admin.manager.admin.accr-save','uses'=>'AdminController@getAccrSave']);    //授权保存
+        Route::any('/admin/accr-save',['as'=>'admin.manager.admin.accr-save','uses'=>'AdminController@postAccrSave']);    //授权保存
 
         Route::any('/role/list',['as'=>'admin.manager.role.list','uses'=>'RoleController@anyList']);        //列表
         Route::any('/role/edit/{id}',['as'=>'admin.manager.role.edit','uses'=>'RoleController@getEdit']);   //修改新增

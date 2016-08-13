@@ -17,7 +17,8 @@
         "barryvdh/laravel-snappy": "^0.3.0",
         "zizaco/entrust": "5.2.x-dev",
         "baum/baum": "~1.1",
-        "barryvdh/laravel-ide-helper": "^2.2"
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "mpociot/laravel-apidoc-generator": "^1.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

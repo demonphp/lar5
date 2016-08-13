@@ -107,6 +107,9 @@ class RoleController extends Controller
      * @desc
      */
     public function getAccrEdit($id){
+        if(empty($id)) {
+            return error('id不存在');
+        }
         $permissions = Permission::permissionsTree(); // 获取所有存在的权限
 
         // 通过多对多获取当前用户组所拥有权限

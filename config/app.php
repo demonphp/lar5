@@ -165,8 +165,7 @@ return [
         Baum\Providers\BaumServiceProvider::class,              //无限级分类
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,  //Ide helper
 
-
-
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,       //API文档生成器
     ],
 
     /*
