@@ -31,6 +31,11 @@ class RoleAuth
      */
     public function handle($request, Closure $next)
     {
+
+        if(Auth::guard('admin')->guest()) {
+            return redirect()->guest('/admin/login');
+        };
+
         if(!IS_ROOT){ // 超管不受限制
             $currRouteName = Route::currentRouteName(); // 当前路由别名
             $previousUrl = URL::previous(); // 用户访问的上一页
